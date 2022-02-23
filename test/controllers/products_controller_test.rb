@@ -43,6 +43,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update product" do
+    patch update_product_url(@product)
     patch :update, id: @product, product: @update
     #patch product_url(@product), params: { product: { description: @product.description, image_url: @product.image_url, price: @product.price, title: @product.title } }
     assert_redirected_to product_url(@product)
