@@ -1,15 +1,17 @@
-<% unless cart.line_items.empty? %>
-<div class="cart_title">Your Cart</div>
-<table>
-  <%= render(cart.line_items) %>
+<% if cart&.line_items&.present? %>
+  <div class="cart_title">Your Cart</div>
+  <table>
+    <% cart&.line_items.each do |line_item| %>
+      <%= render "line_items/line_item", line_item: line_item %>
+    <% end %>
 
-  <tr class="total_line">
-    <td colspan="2">Total</td>
-    <td class="total_cell"><%= number_to_currency(cart.total_price) %></td>
-  </tr>
-</table>
+    <tr class="total_line">
+      <td colspan="2">Total</td>
+      <td class="total_cell"><%= number_to_currency(cart.total_price) %></td>
+    </tr>
+  </table>
 
-<%= button_to "Checkout", new_order_path, method: :get %>
-<%= button_to 'Empty cart', cart, method: :delete,
-              data: { confirm: 'Are you sure?' } %>
+  <%= button_to "Checkout", new_order_path, method: :get %>
+  <%= button_to 'Empty cart', cart, method: :delete,
+                data: { confirm: 'Are you sure?' } %>
 <% end %>
