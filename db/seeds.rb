@@ -20,3 +20,15 @@ Product.create!(title: 'CoffeeScript',
                     </p>},
                 image_url: 'cs.jpg',
                 price: 20.55)
+
+Product.create!(title: 'Effective Haskell',
+                description:
+                  %{<p>
+                    Put the power of Haskell to work in your programs, learning from an
+                    engineer who uses Haskell daily to get practical work done efficiently.
+                    Leverage powerful features like Monad Transformers and Type Families
+                    to build useful applications. Realize the benefits of a pure functional
+                    language, like protecting your code from side effects.
+                    </p>},
+                image_url: 'haskell.jpg',
+                price: 29.95)
