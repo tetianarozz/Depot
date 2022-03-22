@@ -2,7 +2,7 @@
   <div class="cart_title">Your Cart</div>
   <table>
     <% cart&.line_items.each do |line_item| %>
-      <%= render "line_items/line_item", line_item: line_item %>
+      <%= render "line_items/line_item", line_item: line_item, delete_button: true %>
     <% end %>
 
     <tr class="total_line">

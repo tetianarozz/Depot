@@ -3,7 +3,9 @@
     <td><%= line_item.product.title %></td>
     <td class="item_price"><%= number_to_currency(line_item.total_price) %></td>
   <tr>
-  <tr>
-    <th colspan="3" align="right"><%= button_to 'Delete', line_item_path(line_item.id), method: :delete,
-                                                data: { confirm: 'Are you sure?' } %></th>
-  </tr>
+  <% if delete_button %>
+    <tr>
+      <th colspan="3" align="right"><%= button_to 'Delete', line_item_path(line_item.id), method: :delete,
+                                                  data: { confirm: 'Are you sure?' } %></th>
+    </tr>
+  <% end %>
