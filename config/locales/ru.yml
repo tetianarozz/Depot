@@ -6,3 +6,50 @@ ru:
       questions: "Вопросы"
       news: "Новости"
       contact:  "Контакты"
+  store:
+    index:
+      title_html: "Каталог товаров"
+      add_html: "В корзину"
+  carts:
+    cart:
+      title: "Ваша корзина"
+      empty: "Очистить корзину"
+      checkout: "Оформить"
+  number:
+    currency:
+      format:
+        unit: "$"
+        precision: 2
+        separator: "."
+        delimiter: ","
+        format: "%u%n"
+  orders:
+    new:
+      legend: "Пожалуйста, введите ваши данные"
+    form:
+      name: "Имя Фамилия"
+      address_html: "Адрес"
+      email: "Эл. адрес"
+      pay_type: "Тип оплаты"
+      pay_prompt_html: "Выберите тип оплаты"
+      submit: "Разместить заказ"
+  activerecord:
+    models:
+      order: "Заказ"
+    attributes:
+      order:
+        address: "Адрес"
+        name: "Имя Фамилия"
+        email:  "Эл. адрес"
+        pay_type: "Тип оплаты"
+    errors:
+      messages:
+        inclusion: "не выбран"
+        blank: "поле не может быть пустым"
+  errors:
+    template:
+      body: "Есть проблемы со следующими полями:"
+      header:
+        one: "1 ошибка не позволяет сохранить %{model}"
+        other: "%{count} ошибок не позволяют сохранить %{model}"
+  thanks: "Спасибо за Ваш заказ!"

@@ -11,8 +11,16 @@
 
   <body class='<%= controller.controller_name %>'>
     <div id="banner">
+
       <%= image_tag("logo.png") %>
       <%= @page_title || "Pragmatic Bookshelf" %>
+
+        <% if I18n.locale == :ru  %>
+          <%= link_to 'RU', url_for(locale: :en)%>
+        <% else %>
+          <%= link_to 'EN', url_for(locale: :ru)%>
+        <% end %>
+
     </div>
     <div id="columns">
       <div id="side">
