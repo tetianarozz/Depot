@@ -23,7 +23,7 @@ class Product < ApplicationRecord
 
   validates :image_url, allow_blank: true, format: {
     with: /\.(gif|jpg|png)\Z/i,
-    message: 'URL должен указывать на изображение формата GIF, JPG или PNG.'
+    message: "URL должен указывать на изображение формата GIF, JPG или PNG."
   }
 
   def self.latest
@@ -35,10 +35,10 @@ class Product < ApplicationRecord
   # убеждаемся в отсутствии товарных позиций, ссылающихся на данный товар
   def ensure_not_referenced_by_any_line_item
     if line_items.empty?
-      return true
+      true
     else
-      errors.add(:base, 'существуют товарные позиции')
-      return false
+      errors.add(:base, "существуют товарные позиции")
+      false
     end
   end
 end

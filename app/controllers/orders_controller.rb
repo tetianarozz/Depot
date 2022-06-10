@@ -37,11 +37,11 @@ class OrdersController < ApplicationController
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
         OrderNotifierMailer.received(@order).deliver_now
-        format.html { redirect_to store_url, notice: I18n.t('.thanks') }
+        format.html { redirect_to store_url, notice: I18n.t(".thanks") }
         format.json { render :show, status: :created, location: @order }
       else
-        #@cart = current_cart
-        format.html { render action: 'new' }
+        # @cart = current_cart
+        format.html { render action: "new" }
         format.json { render json: @order.errors,
                              status: :unprocessable_entity }
       end
@@ -72,13 +72,14 @@ class OrdersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_order
-      @order = Order.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def order_params
-      params.require(:order).permit(:name, :address, :email, :pay_type)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_order
+    @order = Order.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def order_params
+    params.require(:order).permit(:name, :address, :email, :pay_type)
+  end
 end
