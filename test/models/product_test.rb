@@ -10,14 +10,14 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
-require 'test_helper'
+require "test_helper"
 
 class ProductTest < ActiveSupport::TestCase
   fixtures :products
   # test "the truth" do
   #   assert true
   # end
-  test 'product attributes must not be empty' do
+  test "product attributes must not be empty" do
     # свойства товара не должны оставаться пустыми
     product = Product.new
     assert product.invalid?
@@ -27,21 +27,21 @@ class ProductTest < ActiveSupport::TestCase
     assert product.errors[:image_url].any?
   end
 
-  test 'product price must be positive' do
+  test "product price must be positive" do
     # цена товара должна быть положительной
     product = Product.new(title:
-                            'My Book Title',
-                          description: 'yyy',
+                            "My Book Title",
+                          description: "yyy",
                           image_url:
-                            'zzz.jpg')
+                            "zzz.jpg")
     product.price = -1
     assert product.invalid?
-    assert_equal ['must be greater than or equal to 0.01'],
+    assert_equal ["must be greater than or equal to 0.01"],
                  product.errors[:price]
     # должна быть больше или равна 0.01
     product.price = 0
     assert product.invalid?
-    assert_equal ['must be greater than or equal to 0.01'],
+    assert_equal ["must be greater than or equal to 0.01"],
                  product.errors[:price]
     product.price = 1
     assert product.valid?
@@ -50,14 +50,14 @@ class ProductTest < ActiveSupport::TestCase
   def new_product(image_url)
     Product.new(
       title:
-        'My Book Title',
+        "My Book Title",
       description:
-        'yyy',
+        "yyy",
       price: 1,
       image_url: image_url)
   end
 
-  test 'image url' do
+  test "image url" do
     # url изображения
     ok = %w[ fred.gif fred.jpg fred.png FRED.JPG FRED.Jpg
          http://a.b.c/x/y/z/fred.gif ]
@@ -74,18 +74,18 @@ class ProductTest < ActiveSupport::TestCase
     end
   end
 
-  test 'product is not valid without a unique title' do
+  test "product is not valid without a unique title" do
     # если у товара нет уникального названия, то он недопустим
     product = Product.new(title: products(:ruby).title,
                           description:
-                            'yyy',
+                            "yyy",
                           price:
                             1,
                           image_url:
-                            'fred.gif')
+                            "fred.gif")
     assert product.invalid?
 
-    assert_equal ['has already been taken'], product.errors[:title]
+    assert_equal ["has already been taken"], product.errors[:title]
     # уже было использовано
   end
 
@@ -99,7 +99,7 @@ class ProductTest < ActiveSupport::TestCase
                             "fred.gif")
     assert product.invalid?
 
-    assert_equal [I18n.translate('activerecord.errors.messages.taken')],
+    assert_equal [I18n.translate("activerecord.errors.messages.taken")],
                  product.errors[:title]
   end
 end

@@ -1,19 +1,19 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-    config.action_mailer.default_url_options = { host: ENV["PRODUCTION_HOSTNAME"] }
+  config.action_mailer.default_url_options = { host: ENV["PRODUCTION_HOSTNAME"] }
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
-      address: 'smtp.gmail.com',
+      address: "smtp.gmail.com",
       port: 587,
-      domain: 'example.com',
+      domain: "example.com",
       user_name: ENV["SMTP_USER_NAME"],
       password: ENV["SMTP_PASSWORD"],
-      authentication: 'plain',
+      authentication: "plain",
       enable_starttls_auto: true
     }
 
-    # Settings specified here will take precedence over those in config/application.rb.
+  # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
   config.cache_classes = true
@@ -34,7 +34,7 @@ Rails.application.configure do
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
-  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
+  config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present?
 
   # Compress CSS using a preprocessor.
   # config.assets.css_compressor = :sass
